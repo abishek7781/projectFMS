@@ -37,6 +37,7 @@ public class enquiry extends HttpServlet{
 		System.out.println(reg_no);
 		PrintWriter pw=resp.getWriter();
 		resp.setContentType("text/html");
+		pw.println("<title>Enquiry Page</title>");
 		pw.println("<link rel=\"stylesheet\" href=\"css/new.css\"");
 
 		try {

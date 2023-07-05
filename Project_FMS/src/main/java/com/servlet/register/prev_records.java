@@ -28,8 +28,10 @@ public class prev_records extends HttpServlet {
         PrintWriter pw = res.getWriter();
         //set content type
         res.setContentType("text/html");
+        //add title of the page
+        pw.println("<title>Previous Transaction</title>");
         //link the bootstrap
-        pw.println("<link rel='stylesheet' href='css/bootstrap.css'></link>");
+        pw.println("<link rel='stylesheet' href='css/prev_records.css'></link>");
         //load the JDBC driver
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -43,12 +45,12 @@ public class prev_records extends HttpServlet {
             ResultSet rs = ps.executeQuery();
 			pw.println("<img style=\"width:264px; height:87px;padding-left:8px;padding-top:1px;\" src=\"https://www.madhaengineeringcollege.com/wp-content/uploads/2022/06/hlogo.png\">");
 
-            pw.println("<button class='btn btn-outline-success d-block'><a href='accpage.html'>Home</a></button>");
-			pw.println("<u><h1 style='font-family:Timesnewroman; font-weight:bold'  class='td1' >Previous Transactions</h1></u>");
+            pw.println("<a type=\"button\" class=\"btn\" href=\"accpage.html\" value=\"Home\">Home</a>");
+			pw.println("<u><h1 style=font-weight:bolder'  class='td1' >Previous Transactions</h1></u>");
 
-            pw.println("<div style='margin:auto;width:900px;margin-top:100px;'>");
+            pw.println("<div name='transaction_tbl'>");
             pw.println("<table class='table table-hover table-striped'>");
-            pw.println("<tr>");
+            pw.println("<tr class=\"heading\">");
             pw.println("<th>Register No</th>");
             pw.println("<th>Date</th>");
             pw.println("<th>Amount</th>");
@@ -60,9 +62,9 @@ public class prev_records extends HttpServlet {
                 	continue;
                 }
                 else {
-                pw.println("<td>"+rs.getString(1)+"</td>");
+                pw.println("<td class=\"bold\">"+rs.getString(1)+"</td>");
                 pw.println("<td>"+rs.getString(2)+"</td>");
-                pw.println("<td>"+rs.getString(3)+"</td>");
+                pw.println("<td class=\"green bold\">"+rs.getString(3)+"</td>");
                 pw.println("</tr>");}
             }
             pw.println("</table>");

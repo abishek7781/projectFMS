@@ -28,7 +28,7 @@ public class student_registeration extends HttpServlet {
     	// TODO Auto-generated method stub
     	PrintWriter pw = resp.getWriter();
     	resp.setContentType("text/html");
-    	pw.println("<link rel=\"stylesheet\" href=\"css/bootstrap.css\"");
+    	pw.println("<link rel=\"stylesheet\" href=\"css/new_user_signin_output.css\"");
     	String reg_no = req.getParameter("reg_no");
     	String name = req.getParameter("name");
     	String email = req.getParameter("email");
@@ -49,16 +49,23 @@ public class student_registeration extends HttpServlet {
 			ps.setString(4, password);
 			ps.setString(5, confirm_password);
 			int count = ps.executeUpdate();
-			 pw.println("<div class='card' style='margin:auto;width:300px;margin-top:100px'>");
+			 pw.println("<div class=\"output-box\">");
 	            if(count==1) {
-	                pw.println("<h2 class='bg-danger text-light text-center'>Student Details Registered Successfully</h2>");
+	            	pw.println("<br>");
+	                pw.println("<a class=\"op text-white\">Registered Successfully</a>");
 	            }else {
-	                pw.println("<h2 class='bg-danger text-light text-center'>Student Details Not Registered!!!!</h2>");
+	            	pw.println("<br>");
+	                pw.println("<h2 class=\"op text-white\">Registration Unsuccessful !/a>");
 	            }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		pw.println("<br>");
+        pw.println("<a type=\"button\" href='login.jsp' class=\"btn\">Home</a>");
+        pw.println("</div>");
+        //close the stram
+        pw.close();
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
